@@ -1,8 +1,6 @@
 services:
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: wwwegwerg/musicplaybackend:latest
     depends_on:
       db:
         condition: service_healthy
@@ -13,7 +11,7 @@ services:
       JWT_SECRET: ${JWT_SECRET:-change-me}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-3600}
     ports:
-      - "3000:3000"
+      - "80:3000"
     restart: unless-stopped
 
   db:
