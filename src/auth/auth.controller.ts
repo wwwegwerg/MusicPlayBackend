@@ -22,22 +22,22 @@ interface AuthenticatedRequest extends Request {
 }
 
 @Controller('auth')
-@ApiTags('Auth')
+@ApiTags('Аутентификация')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @ApiOperation({ summary: 'Register a new user' })
-  @ApiCreatedResponse({ description: 'User registered successfully', type: AuthResponseDto })
-  @ApiConflictResponse({ description: 'Username is already taken' })
+  @ApiOperation({ summary: 'Зарегистрировать нового пользователя' })
+  @ApiCreatedResponse({ description: 'Пользователь успешно зарегистрирован', type: AuthResponseDto })
+  @ApiConflictResponse({ description: 'Имя пользователя уже занято' })
   register(@Body() registerDto: RegisterDto) {
     return this.authService.register(registerDto);
   }
 
   @Post('login')
-  @ApiOperation({ summary: 'Authenticate with username and password' })
-  @ApiOkResponse({ description: 'User authenticated', type: AuthResponseDto })
-  @ApiUnauthorizedResponse({ description: 'Invalid credentials' })
+  @ApiOperation({ summary: 'Авторизоваться по имени пользователя и паролю' })
+  @ApiOkResponse({ description: 'Пользователь аутентифицирован', type: AuthResponseDto })
+  @ApiUnauthorizedResponse({ description: 'Неверные учетные данные' })
   login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
@@ -45,9 +45,9 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Get the currently authenticated user' })
-  @ApiOkResponse({ description: 'Current user profile', type: PublicUserDto })
-  @ApiUnauthorizedResponse({ description: 'Missing or invalid access token' })
+  @ApiOperation({ summary: 'Получить текущего аутентифицированного пользователя' })
+  @ApiOkResponse({ description: 'Профиль текущего пользователя', type: PublicUserDto })
+  @ApiUnauthorizedResponse({ description: 'Отсутствует или недействительный токен доступа' })
   me(@Req() req: AuthenticatedRequest) {
     return req.user;
   }

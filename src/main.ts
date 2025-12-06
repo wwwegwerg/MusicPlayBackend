@@ -17,8 +17,8 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('MusicPlay Auth API')
-    .setDescription('Minimal API for registering and logging in users with JWT protection.')
+    .setTitle('API аутентификации MusicPlay')
+    .setDescription('Минимальный API для регистрации и входа пользователей c защитой JWT.')
     .setVersion('1.0')
     .addBearerAuth(
       { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' },

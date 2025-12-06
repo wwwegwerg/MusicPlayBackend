@@ -5,6 +5,6 @@ export class AuthResponseDto {
   @ApiProperty({ type: () => PublicUserDto })
   user!: PublicUserDto;
 
-  @ApiProperty({ description: 'JWT access token. Pass as Bearer token to access protected routes.' })
+  @ApiProperty({ description: 'JWT-токен доступа. Передавайте как Bearer-токен для доступа к защищённым маршрутам.' })
   token!: string;
 }

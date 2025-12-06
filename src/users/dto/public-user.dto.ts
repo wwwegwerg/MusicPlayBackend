@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class PublicUserDto {
-  @ApiProperty({ format: 'uuid', description: 'Unique identifier of the user' })
+  @ApiProperty({ format: 'uuid', description: 'Уникальный идентификатор пользователя' })
   id!: string;
 
-  @ApiProperty({ maxLength: 32, description: 'Unique username chosen during registration' })
+  @ApiProperty({ maxLength: 32, description: 'Уникальное имя, выбранное при регистрации' })
   username!: string;
 
-  @ApiProperty({ type: String, format: 'date-time', description: 'ISO timestamp when the user was created' })
+  @ApiProperty({ type: String, format: 'date-time', description: 'Метка времени ISO, когда пользователь был создан' })
   createdAt!: string;
 
-  @ApiProperty({ type: String, format: 'date-time', description: 'ISO timestamp of the last update' })
+  @ApiProperty({ type: String, format: 'date-time', description: 'Метка времени ISO последнего обновления' })
   updatedAt!: string;
 }
